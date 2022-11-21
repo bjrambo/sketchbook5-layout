@@ -2,7 +2,7 @@
 {@Context::addHtmlHeader('<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes, target-densitydpi=medium-dpi" />')}
 <!--@end-->
 
-<!--@if(class_exists(Mobile) && Mobile::isFromMobilePhone())-->
+<!--@if(Mobile::isFromMobilePhone())-->
 <load cond="__DEBUG__" target="../../common/js/jquery.js" usecdn="true" index="-100006" />
 <load cond="!__DEBUG__" target="../../common/js/jquery.min.js" usecdn="true" index="-100006" />
 <!--@end-->
