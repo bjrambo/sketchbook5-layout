@@ -1,19 +1,20 @@
 {@
-	$member_config = MemberModel::getMemberConfig();
-	$identifierForm->name = $member_config->identifier;
+$member_config = MemberModel::getMemberConfig();
+$identifiers = $member_config->identifiers;
 }
 
 <!--%import("filter/login.xml")-->
 
 <button type="button" class="tg_blur"></button>
-<h2><!--@if($identifierForm->name=='email_address')-->{$lang->email} <!--@end-->{$lang->cmd_login}</h2>
+<h2>
+	<!--@if(!in_array('user_id', $identifiers) && !in_array('phone_number', $identifiers))-->{$lang->email} <!--@end-->{$lang->cmd_login}</h2>
 <form action="./" method="post" ruleset="@login">
 	<fieldset>
 		<input type="hidden" name="act" value="procMemberLogin" />
 		<input type="hidden" name="success_return_url" value="{getRequestUriByServerEnviroment()}" />
 		<div class="itx_area">
 			<span class="itx_wrp">
-				<label for="uid"><!--@if($identifierForm->name=='email_address')-->{$lang->email}<!--@else-->{$lang->user_id}<!--@end--></label>
+				<label for="uid"><!--@if(!in_array('user_id', $identifiers) && !in_array('phone_number', $identifiers))-->{$lang->email}<!--@else-->{$lang->user_id}<!--@end--></label>
 				<input type="text" name="user_id" id="uid" class="itx" />
 			</span>
 			<span class="itx_wrp">
